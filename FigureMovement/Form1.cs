@@ -24,28 +24,16 @@ namespace FigureMovement
             new Action(Start).BeginInvoke(null, null);
             //Start();
         }
-        private void MoveCircle()
-        {
-            Circle circle = new Circle(10, 10, 5);
-            Movemet.MoveInForm(circle, 2, 1);
-        }
-        private void MoveSquare()
-        {
-            Square square = new Square(10, 10, 20);
-            Movemet.MoveInForm(square, 3, 2);
-        }
-        private void MoveRhomb()
-        {
-            Rhomb rhomb = new Rhomb(10, 10, 70, 40);
-            Movemet.MoveInForm(rhomb, 1, 0.5);
-        }
         private void Start()
         {
-            new Action(MoveRhomb).BeginInvoke(null, null);
-            new Action(MoveCircle).BeginInvoke(null, null);
-            new Action(MoveSquare).BeginInvoke(null, null);
+            Movemet.Move move = new Movemet.Move(Movemet.MoveInForm);
             
-
+            Circle circle = new Circle(10, 10, 5);
+            Square square = new Square(10, 10, 20);
+            move.BeginInvoke(circle, 1, 1, null, null);
+            move.BeginInvoke(square, 2, 1, null, null);
+            Rhomb rhomb = new Rhomb(10, 10, 70, 40);
+            move.BeginInvoke(rhomb, 1, 2, null, null);
             //Graphics g;
             //g = this.CreateGraphics();
             //Circle circle = new Circle(10, 10, 5);
